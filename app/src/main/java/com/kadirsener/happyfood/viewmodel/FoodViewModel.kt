@@ -16,6 +16,7 @@ class FoodViewModel @Inject constructor(
 
 ) : ViewModel() {
 
+    //fragment içerisinde çağırman lazım.
             val foodList = repository.getFood()
 
             private val searchFoods = MutableLiveData<Resource<FoodResponse>>()

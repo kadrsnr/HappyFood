@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">HappyFood</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ge_i">Geçiş</string>
+    <string name="besin_ara">Besin Ara</string>
+</resources>

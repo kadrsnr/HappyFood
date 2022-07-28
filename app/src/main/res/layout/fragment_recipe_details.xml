@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.RecipeDetailsFragment"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/recipeDetailsLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+
+
+    <TextView
+        android:id="@+id/recipeDetailsFoodNameText"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recipe Name"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        android:layout_marginLeft="20dp"/>
+
+    </LinearLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/recipeDetailsFab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/fab"
+        android:backgroundTint="@color/white"
+        android:clickable="true"
+        app:fabSize="normal"
+        app:layout_anchorGravity="right|top"
+        android:layout_margin="15dp"
+        app:layout_anchor="@id/recipeDetailsLinearLayout"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="10dp"
+        android:clickable="true"
+        app:cardCornerRadius="50dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true"
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recipeDetailsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="30dp"
+            android:paddingTop="20dp" />
+
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_anchor="@+id/cardView"
+        app:layout_anchorGravity="bottom|center"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="70dp"
+            android:text="Calorie : "
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="60dp"
+            android:text="Fat : "
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Protein : "
+            android:textSize="20sp"
+            android:layout_marginRight="20dp"/>
+
+
+    </LinearLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

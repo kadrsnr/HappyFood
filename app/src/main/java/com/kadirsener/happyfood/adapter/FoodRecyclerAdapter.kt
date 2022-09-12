@@ -1,7 +1,5 @@
 package com.kadirsener.happyfood.adapter
 
-import android.os.Parcel
-import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,14 +9,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.kadirsener.happyfood.R
 import com.kadirsener.happyfood.roomdb.Food
+import javax.inject.Inject
 
-class FoodListRecyclerAdapter() : RecyclerView.Adapter<FoodListRecyclerAdapter.FoodListViewHolder>(),
-    Parcelable {
+class FoodListRecyclerAdapter @Inject constructor() : RecyclerView.Adapter<FoodListRecyclerAdapter.FoodListViewHolder>(){
     class FoodListViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView)
 
     private var diffUtil = object : DiffUtil.ItemCallback<Food>() {
         override fun areItemsTheSame(oldItem: Food, newItem: Food): Boolean {
-                return oldItem==newItem
+            return oldItem==newItem
         }
 
         override fun areContentsTheSame(oldItem: Food, newItem: Food): Boolean {
@@ -26,50 +24,27 @@ class FoodListRecyclerAdapter() : RecyclerView.Adapter<FoodListRecyclerAdapter.F
         }
 
     }
-            private var recyclerViewDiff = AsyncListDiffer(this, diffUtil)
+    private var recyclerViewDiff = AsyncListDiffer(this, diffUtil)
 
-            var foodList : List<Food>
-            get() = recyclerViewDiff.currentList
-            set(value) = recyclerViewDiff.submitList(value)
-
-    constructor(parcel: Parcel) : this() {
-
-    }
-
+    var foodList : List<Food>
+        get() = recyclerViewDiff.currentList
+        set(value) = recyclerViewDiff.submitList(value)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodListViewHolder {
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.recipe_row,parent,false)
-                return  FoodListViewHolder(view)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.recipe_row,parent,false)
+        return  FoodListViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: FoodListViewHolder, position: Int) {
-                val foodText = holder.itemView.findViewById<TextView>(R.id.recipeRowRecipeNameText)
-                val foodss = foodList[position]
-                holder.itemView.apply {
-                    foodText.text = "Name : ${foodss.name}"
-                }
+        val foodText = holder.itemView.findViewById<TextView>(R.id.recipeRowRecipeNameText)
+        val foodss = foodList[position]
+        holder.itemView.apply {
+            foodText.text = "Name : ${foodss.name}"
+        }
 
-                }
+    }
 
     override fun getItemCount(): Int {
         return  foodList.size      }
-
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-
-    }
-
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<FoodListRecyclerAdapter> {
-        override fun createFromParcel(parcel: Parcel): FoodListRecyclerAdapter {
-            return FoodListRecyclerAdapter(parcel)
-        }
-
-        override fun newArray(size: Int): Array<FoodListRecyclerAdapter?> {
-            return arrayOfNulls(size)
-        }
-    }
 
 }
 

@@ -56,7 +56,7 @@ class FoodViewModel @Inject constructor(
                     insertFoodMsg.postValue(Resource.error("Enter Name", null))
                     return
                 } else {
-                    val food = Food(name)
+                    val food = Food(name, calorie = 0, fat = 0, protein = 0, foodId = null)
                     insertFood(food)
                     insertFoodMsg.postValue(Resource.success(food))
 

@@ -1,8 +1,6 @@
 package com.kadirsener.happyfood.dependencyinjection
 
-import android.app.Application
 import android.content.Context
-import androidx.room.ProvidedTypeConverter
 import androidx.room.Room
 import com.kadirsener.happyfood.api.RetrofitApi
 import com.kadirsener.happyfood.repo.FoodRepository
@@ -13,14 +11,15 @@ import com.kadirsener.happyfood.util.Util.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.internal.managers.ApplicationComponentManager
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
+
+@InstallIn(SingletonComponent::class)
 @Module
-@InstallIn(ApplicationComponentManager::class)
 object AppModule {
     @Singleton
     @Provides

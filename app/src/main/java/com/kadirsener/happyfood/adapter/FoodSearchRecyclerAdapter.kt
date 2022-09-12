@@ -12,56 +12,55 @@ import com.kadirsener.happyfood.model.FoodResponse
 import com.kadirsener.happyfood.model.FoodResult
 import com.kadirsener.happyfood.roomdb.Food
 
-class FoodSearchRecyclerAdapter() :
+class FoodSearchRecyclerAdapter(var foodlist: List<FoodResult>) :
     RecyclerView.Adapter<FoodSearchRecyclerAdapter.FoodSearchViewHolder>() {
 
 
     class FoodSearchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-        private var onItemClickListener : ((String) -> Unit)? = null
+    fun bind(foodList: List<FoodResponse>, itemView: View) {
 
-    private var diffUtill = object : DiffUtil.ItemCallback<Food>() {
-        override fun areItemsTheSame(oldItem: Food, newItem: Food): Boolean {
-            return oldItem == newItem
-        }
 
-        override fun areContentsTheSame(oldItem: Food, newItem: Food): Boolean {
-            return oldItem == newItem
-        }
     }
-    private var recyclerViewDiff = AsyncListDiffer(this, diffUtill)
-    var searchFoods: List<Food>
-        get() = recyclerViewDiff.currentList
-        set(value) = recyclerViewDiff.submitList(value)
+
+    private var onItemClickListener: ((List<Any>) -> Unit)? = null
+
+
+    lateinit var foodList: List<FoodResult>
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodSearchViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.search_row, parent, false)
         return FoodSearchViewHolder(view)
 
     }
-            fun setOnItemClickListener(listener : (String) -> Unit) {
-                onItemClickListener = listener
-            }
+
+    private fun setOnItemClickListener(listener: (List<Any>) -> Unit) {
+        onItemClickListener = listener
+    }
+
     override fun onBindViewHolder(holder: FoodSearchViewHolder, position: Int) {
         val textViewName = holder.itemView.findViewById<TextView>(R.id.searchRowFoodNameText)
         val textViewCalorie = holder.itemView.findViewById<TextView>(R.id.searchRowCalorieText)
-        val searchFoods = searchFoods[position]
+        val searchFoods = foodList[position]
         holder.itemView.apply {
             textViewName.text = "${searchFoods.name}"
-            textViewCalorie.text="${searchFoods.calorie}"
-            setOnItemClickListener {
-                onItemClickListener?.let{
-                    it()
-                }
-            }
+            textViewCalorie.text = "${searchFoods.calories}"
+
+
         }
-
-
     }
 
     override fun getItemCount(): Int {
-        return searchFoods.size
-    }
+        return foodList.size
+
+        }
+
+
 }
+
+
+
+
 
 

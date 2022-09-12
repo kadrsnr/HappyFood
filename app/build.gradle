@@ -58,6 +58,8 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation "androidx.fragment:fragment-ktx:1.5.2"
+
 
 
     implementation "android.arch.lifecycle:extensions:$lifeCycleExtensionVersion"
@@ -70,6 +72,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.4.32"
     implementation "androidx.navigation:navigation-fragment-ktx:$navVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+
 
     implementation "com.google.android.material:material:1.6.1"
 
@@ -88,6 +92,8 @@ dependencies {
     def hilt = "2.38.1"
     implementation "com.google.dagger:hilt-android:$hilt"
     kapt "com.google.dagger:hilt-android-compiler:$hilt"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
 
 
 }

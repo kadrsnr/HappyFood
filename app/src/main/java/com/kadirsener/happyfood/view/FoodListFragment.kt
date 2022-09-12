@@ -15,6 +15,7 @@ import com.kadirsener.happyfood.databinding.FragmentFoodListBinding
 import com.kadirsener.happyfood.viewmodel.FoodViewModel
 import javax.inject.Inject
 
+
 class FoodListFragment @Inject constructor(
     val foodReyclerAdapter: FoodListRecyclerAdapter
 ) : Fragment(R.layout.fragment_food_list) {
@@ -47,7 +48,7 @@ class FoodListFragment @Inject constructor(
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentFoodListBinding.bind(view)
         fragmentBinding = binding
-        viewModel = ViewModelProvider(requireActivity()).get(FoodViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(FoodViewModel::class.java)
         subscribeToObververs()
         binding.foodlistReecyclerView.adapter = foodReyclerAdapter
         binding.foodlistReecyclerView.layoutManager = LinearLayoutManager(requireContext())
